@@ -1,0 +1,27 @@
+﻿@page "/create-show"
+@inherits ShowPlannerComponentBase
+<Heading Size="HeadingSize.Is3" Margin="Margin.Is5.FromTop.Is4.FromBottom" Class="text-center">Create Show</Heading>
+<Row>
+    <Column ColumnSize="ColumnSize.Is6.Is3.WithOffset">
+        <div class="p-lg-5 p-md-3 event-form">
+            <EditForm Model="@Show" OnValidSubmit="Create">
+                <Field>
+                    <FieldLabel>@L["Title"]</FieldLabel>
+                    <TextEdit @bind-Text="@Show.Title" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["Description"]</FieldLabel>
+                    <MemoEdit @bind-Text="@Show.Description" />
+                </Field>
+                <Field>
+                    <Check TValue="bool" @bind-Checked="@Show.IsFree">@L["Free"]</Check>
+                </Field>
+                <Field>
+                    <FieldLabel>@L["StartTime"]</FieldLabel>
+                    <DateEdit TValue="DateTime" @bind-Date="@Show.StartTime" />
+                </Field>
+                <Button Type="@ButtonType.Submit" Block="true" Color="@Color.Primary" Size="Size.Large">@L["Save"]</Button>
+            </EditForm>
+        </div>
+    </Column>
+</Row>
